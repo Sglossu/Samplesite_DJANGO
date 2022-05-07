@@ -2,10 +2,11 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Главная :: Доска объявлений</title>
+        <title>{{ curent_rubric.name }} :: Доска объявлений</title>
     </head>
     <body>
         <h1>Объявления</h1>
+        <h2>Рубрика: {{ curent_rubric.name }}</h2>
         <div>
             <a href="/bboard/">Главная</a>
             {% for rubric in rubrics %}
@@ -18,7 +19,6 @@
 {#            извлечь значение из атрибута title и вставить значение в то место кода, в котором находится она сама #}
             <h2>{{  bb.title }}</h2>
             <p>{{ bb.content }}</p>
-            <p><a href="/bboard/{{ bb.rubric.pk }}/">{{ bb.rubric.name }}</a></p>
 {#                 date преобразует значение из атрибута published (т.е. временную отметку) в формат указанный дальше#}
             <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
         </div>
