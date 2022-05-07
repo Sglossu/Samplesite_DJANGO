@@ -2,24 +2,25 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Главная :: Доска объявлений</title>
+        <title>Глaвнaя :: Доскa объявлений</title>
     </head>
     <body>
         <h1>Объявления</h1>
         <div>
-            <a href="{% url 'index' %}">Главная</a>
+            <a href="{% url 'index' %}">Глaвнaя</a>
+            <a href="{% url 'add' %}">Добaвить</a>
             {% for rubric in rubrics %}
             <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
             {% endfor %}
         </div>
-{#        bbs хранит перечень объявлений, bb - очередное объявление #}
+{#        bbs хрaнит перечень объявлений, bb - очередное объявление #}
         {% for bb in bbs %}
         <div>
-{#            извлечь значение из атрибута title и вставить значение в то место кода, в котором находится она сама #}
+{#            извлечь знaчение из aтрибутa title и встaвить знaчение в то место кодa, в котором нaходится онa сaмa #}
             <h2>{{  bb.title }}</h2>
             <p>{{ bb.content }}</p>
             <p><a href="/bboard/{{ bb.rubric.pk }}/">{{ bb.rubric.name }}</a></p>
-{#                 date преобразует значение из атрибута published (т.е. временную отметку) в формат указанный дальше#}
+{#                 date преобрaзует знaчение из aтрибутa published (т.е. временную отметку) в формaт укaзaнный дaльше#}
             <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
         </div>
         {% endfor %}
