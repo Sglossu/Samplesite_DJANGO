@@ -1,0 +1,16 @@
+{# extend - тег шаблонизатора, ставится в начале любого производного шаблона, тут указывается путь к шаблону #}
+{% extends "layout/basic.html" %}
+
+{% block title %}{{ curent_rubric.name }}{% endblock %}
+
+{# внутри block-endblock записывается содержимое #}
+{% block content %}
+<h2>Рубрика: {{ curent_rubric.name }}</h2>
+{% for bb in bbs %}
+<div>
+    <h2>{{ bb.title }}</h2>
+    <p>{{ bb.content }}</p>
+    <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+</div>
+{% endfor %}
+{% endblock %}
