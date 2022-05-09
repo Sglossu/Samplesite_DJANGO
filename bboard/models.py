@@ -14,6 +14,10 @@ class Bb (models.Model) :
         verbose_name_plural = 'Объявления'
         verbose_name = 'Объявление'
         ordering = ['-published']
+        constraints = (
+            models.CheckConstraint(check=models.Q(price__gte=0) & \
+                    models.Q(price__lte=1000000), name='bboard_rubric_price_constraints'),
+        )
         
 class Rubric (models.Model) :
     name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
